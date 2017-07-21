@@ -9,16 +9,17 @@
 /* Begin PBXBuildFile section */
 		350D7CBD1F21A6D500CE352D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7CBC1F21A6D500CE352D /* main.m */; };
 		350D7CC01F21A6D500CE352D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7CBF1F21A6D500CE352D /* AppDelegate.m */; };
-		350D7CC31F21A6D500CE352D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7CC21F21A6D500CE352D /* ViewController.m */; };
-		350D7CC61F21A6D500CE352D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 350D7CC41F21A6D500CE352D /* Main.storyboard */; };
+		350D7CC31F21A6D500CE352D /* WPFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7CC21F21A6D500CE352D /* WPFViewController.m */; };
 		350D7CC81F21A6D500CE352D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 350D7CC71F21A6D500CE352D /* Assets.xcassets */; };
 		350D7CCB1F21A6D600CE352D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 350D7CC91F21A6D500CE352D /* LaunchScreen.storyboard */; };
 		350D7CD61F21A6D600CE352D /* WPFMenuControllerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7CD51F21A6D600CE352D /* WPFMenuControllerDemoTests.m */; };
 		350D7CE11F21A6D600CE352D /* WPFMenuControllerDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7CE01F21A6D600CE352D /* WPFMenuControllerDemoUITests.m */; };
-		350D7CF21F21A8EA00CE352D /* WPFInComingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7CF01F21A8EA00CE352D /* WPFInComingTableViewCell.m */; };
-		350D7CF31F21A8EA00CE352D /* WPFInComingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 350D7CF11F21A8EA00CE352D /* WPFInComingTableViewCell.xib */; };
-		350D7CF71F21A8FE00CE352D /* WPFOutComingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7CF51F21A8FE00CE352D /* WPFOutComingTableViewCell.m */; };
-		350D7CF81F21A8FE00CE352D /* WPFOutComingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 350D7CF61F21A8FE00CE352D /* WPFOutComingTableViewCell.xib */; };
+		350D7CFD1F21B39A00CE352D /* WPFMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7CFC1F21B39A00CE352D /* WPFMessage.m */; };
+		350D7D001F21CC3D00CE352D /* WPFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7CFF1F21CC3D00CE352D /* WPFTableView.m */; };
+		350D7D031F21D19D00CE352D /* WPFBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7D021F21D19D00CE352D /* WPFBaseTableViewCell.m */; };
+		350D7D071F21D3F200CE352D /* WPFMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7D061F21D3F200CE352D /* WPFMenuView.m */; };
+		350D7D0A1F21D6AA00CE352D /* WPFTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7D091F21D6AA00CE352D /* WPFTextTableViewCell.m */; };
+		CA20A03F9B0D2B0F6D1B7C63 /* Pods_WPFMenuControllerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3041A9F1A0AAAD5511D1E7F1 /* Pods_WPFMenuControllerDemo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,13 +40,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3041A9F1A0AAAD5511D1E7F1 /* Pods_WPFMenuControllerDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WPFMenuControllerDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		350D7CB81F21A6D500CE352D /* WPFMenuControllerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WPFMenuControllerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		350D7CBC1F21A6D500CE352D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		350D7CBE1F21A6D500CE352D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		350D7CBF1F21A6D500CE352D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		350D7CC11F21A6D500CE352D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		350D7CC21F21A6D500CE352D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		350D7CC51F21A6D500CE352D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		350D7CC11F21A6D500CE352D /* WPFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WPFViewController.h; sourceTree = "<group>"; };
+		350D7CC21F21A6D500CE352D /* WPFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WPFViewController.m; sourceTree = "<group>"; };
 		350D7CC71F21A6D500CE352D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		350D7CCA1F21A6D600CE352D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		350D7CCC1F21A6D600CE352D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,12 +56,18 @@
 		350D7CDC1F21A6D600CE352D /* WPFMenuControllerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WPFMenuControllerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		350D7CE01F21A6D600CE352D /* WPFMenuControllerDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WPFMenuControllerDemoUITests.m; sourceTree = "<group>"; };
 		350D7CE21F21A6D600CE352D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		350D7CEF1F21A8EA00CE352D /* WPFInComingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPFInComingTableViewCell.h; sourceTree = "<group>"; };
-		350D7CF01F21A8EA00CE352D /* WPFInComingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPFInComingTableViewCell.m; sourceTree = "<group>"; };
-		350D7CF11F21A8EA00CE352D /* WPFInComingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WPFInComingTableViewCell.xib; sourceTree = "<group>"; };
-		350D7CF41F21A8FE00CE352D /* WPFOutComingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPFOutComingTableViewCell.h; sourceTree = "<group>"; };
-		350D7CF51F21A8FE00CE352D /* WPFOutComingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPFOutComingTableViewCell.m; sourceTree = "<group>"; };
-		350D7CF61F21A8FE00CE352D /* WPFOutComingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WPFOutComingTableViewCell.xib; sourceTree = "<group>"; };
+		350D7CFB1F21B39A00CE352D /* WPFMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPFMessage.h; sourceTree = "<group>"; };
+		350D7CFC1F21B39A00CE352D /* WPFMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPFMessage.m; sourceTree = "<group>"; };
+		350D7CFE1F21CC3D00CE352D /* WPFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPFTableView.h; sourceTree = "<group>"; };
+		350D7CFF1F21CC3D00CE352D /* WPFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPFTableView.m; sourceTree = "<group>"; };
+		350D7D011F21D19D00CE352D /* WPFBaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPFBaseTableViewCell.h; sourceTree = "<group>"; };
+		350D7D021F21D19D00CE352D /* WPFBaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPFBaseTableViewCell.m; sourceTree = "<group>"; };
+		350D7D051F21D3F200CE352D /* WPFMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPFMenuView.h; sourceTree = "<group>"; };
+		350D7D061F21D3F200CE352D /* WPFMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPFMenuView.m; sourceTree = "<group>"; };
+		350D7D081F21D6AA00CE352D /* WPFTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPFTextTableViewCell.h; sourceTree = "<group>"; };
+		350D7D091F21D6AA00CE352D /* WPFTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPFTextTableViewCell.m; sourceTree = "<group>"; };
+		4BF348EA08CB39F0F0AEEE34 /* Pods-WPFMenuControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WPFMenuControllerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WPFMenuControllerDemo/Pods-WPFMenuControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		D6465403F5D0A2D96E7FAD2D /* Pods-WPFMenuControllerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WPFMenuControllerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WPFMenuControllerDemo/Pods-WPFMenuControllerDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA20A03F9B0D2B0F6D1B7C63 /* Pods_WPFMenuControllerDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13021329A1E40816853FA270 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3041A9F1A0AAAD5511D1E7F1 /* Pods_WPFMenuControllerDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		350D7CAF1F21A6D500CE352D = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +111,8 @@
 				350D7CD41F21A6D600CE352D /* WPFMenuControllerDemoTests */,
 				350D7CDF1F21A6D600CE352D /* WPFMenuControllerDemoUITests */,
 				350D7CB91F21A6D500CE352D /* Products */,
+				DBF9A44FF6FEBC797631ACB8 /* Pods */,
+				13021329A1E40816853FA270 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,12 +129,12 @@
 		350D7CBA1F21A6D500CE352D /* WPFMenuControllerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				350D7D041F21D1D100CE352D /* CustormMenuController */,
 				350D7CEE1F21A8AB00CE352D /* SimpleDemo */,
 				350D7CBE1F21A6D500CE352D /* AppDelegate.h */,
 				350D7CBF1F21A6D500CE352D /* AppDelegate.m */,
-				350D7CC11F21A6D500CE352D /* ViewController.h */,
-				350D7CC21F21A6D500CE352D /* ViewController.m */,
-				350D7CC41F21A6D500CE352D /* Main.storyboard */,
+				350D7CC11F21A6D500CE352D /* WPFViewController.h */,
+				350D7CC21F21A6D500CE352D /* WPFViewController.m */,
 				350D7CC71F21A6D500CE352D /* Assets.xcassets */,
 				350D7CC91F21A6D500CE352D /* LaunchScreen.storyboard */,
 				350D7CCC1F21A6D600CE352D /* Info.plist */,
@@ -154,14 +172,50 @@
 		350D7CEE1F21A8AB00CE352D /* SimpleDemo */ = {
 			isa = PBXGroup;
 			children = (
-				350D7CEF1F21A8EA00CE352D /* WPFInComingTableViewCell.h */,
-				350D7CF01F21A8EA00CE352D /* WPFInComingTableViewCell.m */,
-				350D7CF11F21A8EA00CE352D /* WPFInComingTableViewCell.xib */,
-				350D7CF41F21A8FE00CE352D /* WPFOutComingTableViewCell.h */,
-				350D7CF51F21A8FE00CE352D /* WPFOutComingTableViewCell.m */,
-				350D7CF61F21A8FE00CE352D /* WPFOutComingTableViewCell.xib */,
+				350D7CFA1F21B35B00CE352D /* View */,
+				350D7CF91F21B34F00CE352D /* Model */,
 			);
 			name = SimpleDemo;
+			sourceTree = "<group>";
+		};
+		350D7CF91F21B34F00CE352D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				350D7CFB1F21B39A00CE352D /* WPFMessage.h */,
+				350D7CFC1F21B39A00CE352D /* WPFMessage.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		350D7CFA1F21B35B00CE352D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				350D7CFE1F21CC3D00CE352D /* WPFTableView.h */,
+				350D7CFF1F21CC3D00CE352D /* WPFTableView.m */,
+				350D7D011F21D19D00CE352D /* WPFBaseTableViewCell.h */,
+				350D7D021F21D19D00CE352D /* WPFBaseTableViewCell.m */,
+				350D7D081F21D6AA00CE352D /* WPFTextTableViewCell.h */,
+				350D7D091F21D6AA00CE352D /* WPFTextTableViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		350D7D041F21D1D100CE352D /* CustormMenuController */ = {
+			isa = PBXGroup;
+			children = (
+				350D7D051F21D3F200CE352D /* WPFMenuView.h */,
+				350D7D061F21D3F200CE352D /* WPFMenuView.m */,
+			);
+			name = CustormMenuController;
+			sourceTree = "<group>";
+		};
+		DBF9A44FF6FEBC797631ACB8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4BF348EA08CB39F0F0AEEE34 /* Pods-WPFMenuControllerDemo.debug.xcconfig */,
+				D6465403F5D0A2D96E7FAD2D /* Pods-WPFMenuControllerDemo.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,9 +225,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 350D7CE51F21A6D600CE352D /* Build configuration list for PBXNativeTarget "WPFMenuControllerDemo" */;
 			buildPhases = (
+				CB9CEF90A78DCF2607FF52FB /* [CP] Check Pods Manifest.lock */,
 				350D7CB41F21A6D500CE352D /* Sources */,
 				350D7CB51F21A6D500CE352D /* Frameworks */,
 				350D7CB61F21A6D500CE352D /* Resources */,
+				4F759E1CF4196D9E02E57763 /* [CP] Embed Pods Frameworks */,
+				076AA3B768919DE6AB73108D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -271,10 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				350D7CCB1F21A6D600CE352D /* LaunchScreen.storyboard in Resources */,
-				350D7CF81F21A8FE00CE352D /* WPFOutComingTableViewCell.xib in Resources */,
-				350D7CF31F21A8EA00CE352D /* WPFInComingTableViewCell.xib in Resources */,
 				350D7CC81F21A6D500CE352D /* Assets.xcassets in Resources */,
-				350D7CC61F21A6D500CE352D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,15 +348,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		076AA3B768919DE6AB73108D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WPFMenuControllerDemo/Pods-WPFMenuControllerDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F759E1CF4196D9E02E57763 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WPFMenuControllerDemo/Pods-WPFMenuControllerDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB9CEF90A78DCF2607FF52FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		350D7CB41F21A6D500CE352D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				350D7CC31F21A6D500CE352D /* ViewController.m in Sources */,
-				350D7CF21F21A8EA00CE352D /* WPFInComingTableViewCell.m in Sources */,
+				350D7CC31F21A6D500CE352D /* WPFViewController.m in Sources */,
+				350D7CFD1F21B39A00CE352D /* WPFMessage.m in Sources */,
+				350D7D071F21D3F200CE352D /* WPFMenuView.m in Sources */,
 				350D7CC01F21A6D500CE352D /* AppDelegate.m in Sources */,
-				350D7CF71F21A8FE00CE352D /* WPFOutComingTableViewCell.m in Sources */,
+				350D7D031F21D19D00CE352D /* WPFBaseTableViewCell.m in Sources */,
+				350D7D0A1F21D6AA00CE352D /* WPFTextTableViewCell.m in Sources */,
+				350D7D001F21CC3D00CE352D /* WPFTableView.m in Sources */,
 				350D7CBD1F21A6D500CE352D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,14 +444,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		350D7CC41F21A6D500CE352D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				350D7CC51F21A6D500CE352D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		350D7CC91F21A6D500CE352D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -452,6 +549,7 @@
 		};
 		350D7CE61F21A6D600CE352D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BF348EA08CB39F0F0AEEE34 /* Pods-WPFMenuControllerDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WPFMenuControllerDemo/Info.plist;
@@ -463,6 +561,7 @@
 		};
 		350D7CE71F21A6D600CE352D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6465403F5D0A2D96E7FAD2D /* Pods-WPFMenuControllerDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = WPFMenuControllerDemo/Info.plist;
@@ -537,6 +636,7 @@
 				350D7CE71F21A6D600CE352D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		350D7CE81F21A6D600CE352D /* Build configuration list for PBXNativeTarget "WPFMenuControllerDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -545,6 +645,7 @@
 				350D7CEA1F21A6D600CE352D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		350D7CEB1F21A6D600CE352D /* Build configuration list for PBXNativeTarget "WPFMenuControllerDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -553,6 +654,7 @@
 				350D7CED1F21A6D600CE352D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

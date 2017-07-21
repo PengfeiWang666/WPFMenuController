@@ -1,0 +1,7 @@
+use_frameworks!
+
+target 'WPFMenuControllerDemo' do
+  pod 'Masonry'
+  pod 'UITableView+FDTemplateLayoutCell'
+end
+
