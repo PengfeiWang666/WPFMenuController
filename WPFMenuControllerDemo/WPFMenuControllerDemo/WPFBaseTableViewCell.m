@@ -27,7 +27,7 @@ static NSInteger const kAvatarMarginH = 10;
         self.alignement = [reuseIdentifier containsString:kCellIdentifierLeft] ? MessageAlignementLeft : MessageAlignementRight;
         
         [self buildCell];
-//        [self bindGestureRecognizer];
+        [self bindGestureRecognizer];
     }
     return self;
 }
@@ -89,6 +89,44 @@ static NSInteger const kAvatarMarginH = 10;
         }];
     }
 }
+
+- (void)bindGestureRecognizer {
+    UILongPressGestureRecognizer *bubblelongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressOnBubble:)];
+    [self.bubbleView addGestureRecognizer:bubblelongPress];
+}
+
+- (void)longPressOnBubble:(UILongPressGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:UIMenuControllerWillHideMenuNotification object:nil];
+        
+        
+        
+        
+        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+        [keyWindow addSubview:self.custormMenu];
+        
+        CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
+        CGFloat itemW = 72;
+        CGRect targetRectInWindow = [self.contentView convertRect:self.bubbleView.frame toView:keyWindow];
+        CGFloat targetCenterX = targetRectInWindow.origin.x + targetRectInWindow.size.width/2;
+        CGFloat menuW = self.custormMenu.itemCount * itemW;
+        CGFloat menuH = 62;
+        CGFloat menuX = targetCenterX - menuW/2 > 0 ? targetCenterX - menuW/2 : 0;
+        menuX = menuX + menuW > screenW ? screenW - menuW : menuX;
+        CGFloat menuY = targetRectInWindow.origin.y - menuH;
+        menuY = menuY < 20 ? targetRectInWindow.origin.y + targetRectInWindow.size.height : menuY;
+        
+        CGRect frame = CGRectMake(menuX, menuY, menuW, menuH);
+        
+        [self.custormMenu setFrame:frame targetRect:targetRectInWindow];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(hideMenuNotiAction)
+                                                     name:UIMenuControllerWillHideMenuNotification
+                                                   object:nil];
+    }
+}
+
 
 - (void)setMessage:(WPFMessage *)message {
     _message = message;
