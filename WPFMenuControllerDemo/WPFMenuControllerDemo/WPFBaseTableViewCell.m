@@ -97,16 +97,13 @@ static NSInteger const kAvatarMarginH = 10;
 
 - (void)longPressOnBubble:(UILongPressGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:UIMenuControllerWillHideMenuNotification object:nil];
-        
-        
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WPFMenuControllerWillHideMenuNotification" object:nil];
         
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
         [keyWindow addSubview:self.custormMenu];
         
         CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
-        CGFloat itemW = 72;
+        CGFloat itemW = 53;
         CGRect targetRectInWindow = [self.contentView convertRect:self.bubbleView.frame toView:keyWindow];
         CGFloat targetCenterX = targetRectInWindow.origin.x + targetRectInWindow.size.width/2;
         CGFloat menuW = self.custormMenu.itemCount * itemW;
@@ -122,9 +119,20 @@ static NSInteger const kAvatarMarginH = 10;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(hideMenuNotiAction)
-                                                     name:UIMenuControllerWillHideMenuNotification
+                                                     name:@"WPFMenuControllerWillHideMenuNotification"
                                                    object:nil];
     }
+}
+
+- (void)hideMenuNotiAction {
+    [self.custormMenu removeFromSuperview];
+}
+
+- (CGSize)sizeThatFits:(CGSize)size {
+    CGFloat totalHeight = 0;
+    totalHeight += [self.bubbleView sizeThatFits:size].height;
+    totalHeight += 24;
+    return CGSizeMake(size.width, totalHeight);
 }
 
 
@@ -133,7 +141,18 @@ static NSInteger const kAvatarMarginH = 10;
     NSString *imageName = message.msgDirection == WPFMessageDirectionIncoming ? @"liuyifei" : @"xiaohuangren";
     [self.avatarHeaderView setImage:[UIImage imageNamed:imageName]];
     
-    
+    if (message.msgDirection == WPFMessageDirectionIncoming) {
+        [self.custormMenu setItemType:MenuItemTypeCopy | MenuItemTypeTransmit | MenuItemTypeCollect | MenuItemTypeDelete];
+    } else {
+        [self.custormMenu setItemType:MenuItemTypeCopy | MenuItemTypeTransmit | MenuItemTypeCollect | MenuItemTypeRevoke | MenuItemTypeDelete];
+    }
+}
+
+- (WPFMenuView *)custormMenu {
+    if (!_custormMenu) {
+        _custormMenu = [[WPFMenuView alloc] init];
+    }
+    return _custormMenu;
 }
 
 

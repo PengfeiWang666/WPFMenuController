@@ -14,6 +14,7 @@
 
 @interface WPFMenuView ()
 
+@property (nonatomic, strong) UIStackView *containerView;
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIImageView *arrowImageView;
 @property (nonatomic, strong) UIButton *revokeButton;
@@ -119,217 +120,37 @@
 - (void)setItemType:(MenuItemType)itemType {
     CGFloat buttonH = 54;
     CGFloat margin = 3;
+    [self.backgroundImageView addSubview:self.containerView];
+    [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.backgroundImageView);
+    }];
     
-    if (itemType == (MenuItemTypeTransmit | MenuItemTypeThumbup | MenuItemTypeCopy)) {//点、转、复
-        self.itemCount = 3;
-        // 针对别人发送的文本：拥有转发、点赞、复制的文本类型最多
-        [self addSubview:self.revokeButton];
-        [self addSubview:self.copyingButton];
-        [self addSubview:self.transmitButton];
-        
-        [self.revokeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.top.equalTo(self.backgroundImageView).mas_offset(margin);
-            make.height.mas_equalTo(buttonH);
-            make.trailing.equalTo(self.copyingButton.mas_leading);
-            make.width.equalTo(self.copyingButton);
-        }];
-        [self.copyingButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.revokeButton.mas_trailing);
-        }];
-        [self.transmitButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.copyingButton.mas_trailing);
-            make.trailing.equalTo(self);
-        }];
-    } else if (itemType == (MenuItemTypeTransmit | MenuItemTypeThumbup)) {//点、转
-        self.itemCount = 2;
-        // 针对别人发的文件、照片、location：只有转发和点赞
-        [self addSubview:self.revokeButton];
-        [self addSubview:self.transmitButton];
-        
-        [self.revokeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.top.equalTo(self.backgroundImageView).mas_offset(margin);
-            make.height.mas_equalTo(buttonH);
-            make.trailing.equalTo(self.transmitButton.mas_leading);
-            make.width.equalTo(self.transmitButton);
-        }];
-        [self.transmitButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.top.height.equalTo(self.revokeButton);
-            make.leading.equalTo(self.revokeButton.mas_trailing);
-            make.trailing.equalTo(self);
-        }];
-    } else if (itemType == (MenuItemTypeTransmit | MenuItemTypeThumbup | MenuItemTypeCopy | MenuItemTypeDelete)) {//点、转、复、删
+    if (itemType == (MenuItemTypeCopy | MenuItemTypeTransmit | MenuItemTypeCollect | MenuItemTypeDelete)) {
         self.itemCount = 4;
-        // 针对自己发送的文本和文件：全部都有
-        [self addSubview:self.revokeButton];
-        [self addSubview:self.copyingButton];
-        [self addSubview:self.transmitButton];
-        [self addSubview:self.deleteButton];
         
-        [self.revokeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.top.equalTo(self.backgroundImageView).mas_offset(margin);
-            make.height.mas_equalTo(buttonH);
-            make.trailing.equalTo(self.copyingButton.mas_leading);
-            make.width.equalTo(self.copyingButton);
-        }];
-        [self.copyingButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.revokeButton.mas_trailing);
-        }];
-        [self.transmitButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.copyingButton.mas_trailing);
-        }];
-        [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.transmitButton.mas_trailing);
-            make.trailing.equalTo(self);
-        }];
-    } else if (itemType == (MenuItemTypeTransmit | MenuItemTypeThumbup | MenuItemTypeDelete)) {//点、转、删
+        [self.containerView addArrangedSubview:self.copyingButton];
+        [self.containerView addArrangedSubview:self.transmitButton];
+        [self.containerView addArrangedSubview:self.collectButton];
+        [self.containerView addArrangedSubview:self.deleteButton];
+    } else if (itemType == (MenuItemTypeCopy | MenuItemTypeTransmit | MenuItemTypeCollect | MenuItemTypeRevoke | MenuItemTypeDelete)) {
+        self.itemCount = 5;
+        
+        [self.containerView addArrangedSubview:self.copyingButton];
+        [self.containerView addArrangedSubview:self.transmitButton];
+        [self.containerView addArrangedSubview:self.collectButton];
+        [self.containerView addArrangedSubview:self.revokeButton];
+        [self.containerView addArrangedSubview:self.deleteButton];
+    } else {
         self.itemCount = 3;
-        // 针对自己发送的文件、照片、location：拥有转发、点赞、删除
-        [self addSubview:self.revokeButton];
-        [self addSubview:self.transmitButton];
-        [self addSubview:self.deleteButton];
-        
-        [self.revokeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.top.equalTo(self.backgroundImageView).mas_offset(margin);
-            make.height.mas_equalTo(buttonH);
-            make.trailing.equalTo(self.transmitButton.mas_leading);
-            make.width.equalTo(self.transmitButton);
-        }];
-        [self.transmitButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.revokeButton.mas_trailing);
-        }];
-        [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.transmitButton.mas_trailing);
-            make.trailing.equalTo(self);
-        }];
-    } else if (itemType == (MenuItemTypeThumbup | MenuItemTypeDelete)) {//点、删
-        self.itemCount = 2;
-        // 针对自己发送的语音：只有点赞和删除
-        [self addSubview:self.revokeButton];
-        [self addSubview:self.deleteButton];
-        
-        [self.revokeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.top.equalTo(self.backgroundImageView).mas_offset(margin);
-            make.height.mas_equalTo(buttonH);
-            make.trailing.equalTo(self.deleteButton.mas_leading);
-            make.width.equalTo(self.deleteButton);
-        }];
-        [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.equalTo(self.revokeButton);
-            make.leading.equalTo(self.revokeButton.mas_trailing);
-            make.trailing.equalTo(self);
-        }];
-    } else if (itemType == MenuItemTypeThumbup) {//点
-        self.itemCount = 1;
-        // 针对别人发送的语音：只能点赞
-        [self addSubview:self.revokeButton];
-        [self.revokeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.top.trailing.equalTo(self.backgroundImageView).mas_offset(margin);
-            make.height.mas_equalTo(buttonH);
-        }];
-    } else if (itemType == (MenuItemTypeTransmit | MenuItemTypeThumbup | MenuItemTypeDelete | MenuItemTypePreview)) {//点、转、删、预
-        self.itemCount = 4;
-        [self addSubview:self.revokeButton];
-        [self addSubview:self.deleteButton];
-        [self addSubview:self.transmitButton];
-        [self addSubview:self.collectButton];
-        
-        [self.revokeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.top.equalTo(self.backgroundImageView).mas_offset(margin);
-            make.height.mas_equalTo(buttonH);
-            make.trailing.equalTo(self.transmitButton.mas_leading);
-            make.width.equalTo(self.transmitButton);
-        }];
-        [self.transmitButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.revokeButton.mas_trailing);
-        }];
-        [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.transmitButton.mas_trailing);
-        }];
-        [self.collectButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.deleteButton.mas_trailing);
-            make.trailing.equalTo(self);
-        }];
-    } else if (itemType == (MenuItemTypeTransmit | MenuItemTypeThumbup | MenuItemTypeDownload)) {
-        self.itemCount = 3;
-        //点、转、下
-        [self addSubview:self.revokeButton];
-        [self addSubview:self.transmitButton];
-        [self addSubview:self.downloadButton];
-        
-        [self.revokeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.top.equalTo(self.backgroundImageView).mas_offset(margin);
-            make.height.mas_equalTo(buttonH);
-            make.trailing.equalTo(self.transmitButton.mas_leading);
-            make.width.equalTo(self.transmitButton);
-        }];
-        [self.transmitButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.revokeButton.mas_trailing);
-        }];
-        [self.downloadButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.transmitButton.mas_trailing);
-            make.trailing.equalTo(self);
-        }];
-    }else if (itemType == (MenuItemTypeThumbup | MenuItemTypeTransmit | MenuItemTypePreview)) {
-        self.itemCount = 3;
-        //点、转、预
-        [self addSubview:self.revokeButton];
-        [self addSubview:self.transmitButton];
-        [self addSubview:self.collectButton];
-        
-        [self.revokeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.top.equalTo(self.backgroundImageView).mas_offset(margin);
-            make.height.mas_equalTo(buttonH);
-            make.trailing.equalTo(self.transmitButton.mas_leading);
-            make.width.equalTo(self.transmitButton);
-        }];
-        [self.transmitButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.revokeButton.mas_trailing);
-        }];
-        [self.collectButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.transmitButton.mas_trailing);
-            make.trailing.equalTo(self);
-        }];
-    }else if (itemType == (MenuItemTypeThumbup | MenuItemTypeTransmit | MenuItemTypeDelete | MenuItemTypeDownload)) {//点、转、删、下
-        self.itemCount = 4;
-        [self addSubview:self.revokeButton];
-        [self addSubview:self.deleteButton];
-        [self addSubview:self.transmitButton];
-        [self addSubview:self.downloadButton];
-        
-        [self.revokeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.top.equalTo(self.backgroundImageView).mas_offset(margin);
-            make.height.mas_equalTo(buttonH);
-            make.trailing.equalTo(self.transmitButton.mas_leading);
-            make.width.equalTo(self.transmitButton);
-        }];
-        [self.transmitButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.revokeButton.mas_trailing);
-        }];
-        [self.deleteButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.transmitButton.mas_trailing);
-        }];
-        [self.downloadButton mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.height.width.equalTo(self.revokeButton);
-            make.leading.equalTo(self.deleteButton.mas_trailing);
-            make.trailing.equalTo(self);
-        }];
     }
+}
+
+- (UIStackView *)containerView {
+    if (!_containerView) {
+        _containerView = [[UIStackView alloc] init];
+        _containerView.alignment = UIStackViewAlignmentFill;
+    }
+    return _containerView;
 }
 
 - (UIImageView *)backgroundImageView {
@@ -353,7 +174,7 @@
         [_revokeButton setTitle:@"点赞" forState:UIControlStateNormal];
         [_revokeButton setImage:[UIImage imageNamed:@"revoke"] forState:UIControlStateNormal];
         [_revokeButton.titleLabel setFont: [UIFont systemFontOfSize:12]];
-        [_revokeButton setTitleColor:[UIColor colorWithHexaString:@"a5a4a71.00"] forState:UIControlStateNormal];
+        [_revokeButton setTitleColor:[UIColor colorWithHexaString:@"d4d4d41.00"] forState:UIControlStateNormal];
         [_revokeButton addTarget:self action:@selector(thumbupButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _revokeButton;
@@ -365,7 +186,7 @@
         [_deleteButton setTitle:@"删除" forState:UIControlStateNormal];
         [_deleteButton setImage:[UIImage imageNamed:@"delete"] forState:UIControlStateNormal];
         [_deleteButton.titleLabel setFont: [UIFont systemFontOfSize:12]];
-        [_deleteButton setTitleColor:[UIColor colorWithHexaString:@"a5a4a71.00"] forState:UIControlStateNormal];
+        [_deleteButton setTitleColor:[UIColor colorWithHexaString:@"d4d4d41.00"] forState:UIControlStateNormal];
         [_deleteButton addTarget:self action:@selector(deleteButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [_deleteButton wpf_setImagePosition:WPFImagePositionTop spacing:3];
     }
@@ -378,7 +199,7 @@
         [_copyingButton setTitle:@"复制" forState:UIControlStateNormal];
         [_copyingButton setImage:[UIImage imageNamed:@"copy"] forState:UIControlStateNormal];
         [_copyingButton.titleLabel setFont: [UIFont systemFontOfSize:12]];
-        [_copyingButton setTitleColor:[UIColor colorWithHexaString:@"a5a4a71.00"] forState:UIControlStateNormal];
+        [_copyingButton setTitleColor:[UIColor colorWithHexaString:@"d4d4d41.00"] forState:UIControlStateNormal];
         [_copyingButton addTarget:self action:@selector(copyButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [_copyingButton wpf_setImagePosition:WPFImagePositionTop spacing:3];
     }
@@ -391,7 +212,7 @@
         [_transmitButton setTitle:@"转发" forState:UIControlStateNormal];
         [_transmitButton setImage:[UIImage imageNamed:@"share"] forState:UIControlStateNormal];
         [_transmitButton.titleLabel setFont: [UIFont systemFontOfSize:12]];
-        [_transmitButton setTitleColor:[UIColor colorWithHexaString:@"a5a4a71.00"] forState:UIControlStateNormal];
+        [_transmitButton setTitleColor:[UIColor colorWithHexaString:@"d4d4d41.00"] forState:UIControlStateNormal];
         [_transmitButton addTarget:self action:@selector(transmitButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [_transmitButton wpf_setImagePosition:WPFImagePositionTop spacing:3];
     }
@@ -404,7 +225,7 @@
         [_downloadButton setTitle:@"下载" forState:UIControlStateNormal];
         [_downloadButton setImage:[UIImage imageNamed:@"download"] forState:UIControlStateNormal];
         [_downloadButton.titleLabel setFont: [UIFont systemFontOfSize:12]];
-        [_downloadButton setTitleColor:[UIColor colorWithHexaString:@"a5a4a71.00"] forState:UIControlStateNormal];
+        [_downloadButton setTitleColor:[UIColor colorWithHexaString:@"d4d4d41.00"] forState:UIControlStateNormal];
         [_downloadButton addTarget:self action:@selector(downloadButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [_downloadButton wpf_setImagePosition:WPFImagePositionTop spacing:3];
     }
@@ -417,7 +238,7 @@
         [_collectButton setTitle:@"预览" forState:UIControlStateNormal];
         [_collectButton setImage:[UIImage imageNamed:@"favorite"] forState:UIControlStateNormal];
         [_collectButton.titleLabel setFont: [UIFont systemFontOfSize:12]];
-        [_collectButton setTitleColor:[UIColor colorWithHexaString:@"a5a4a71.00"] forState:UIControlStateNormal];
+        [_collectButton setTitleColor:[UIColor colorWithHexaString:@"d4d4d41.00"] forState:UIControlStateNormal];
         [_collectButton addTarget:self action:@selector(previewButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
         [_collectButton wpf_setImagePosition:WPFImagePositionTop spacing:3];
     }

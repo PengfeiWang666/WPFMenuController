@@ -67,7 +67,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    [self configureCell:cell atIndexPath:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView*)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -116,7 +116,7 @@
         
         WPFMessage *message1 = [[WPFMessage alloc] init];
         message1.msgType = WPFMessageTypeText;
-        message1.msgBody = @"这是一条测试数据";
+        message1.msgBody = @"这是一条测试数据哈哈哈哈哈哈哈哈哈哈哈哈哈或哈哈或哈哈或或或或或或哈哈哈哈哈哈哈或哈哈或哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或";
         message1.msgDirection = WPFMessageDirectionIncoming;
         
         WPFMessage *message2 = [[WPFMessage alloc] init];
