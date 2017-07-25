@@ -103,7 +103,7 @@ static NSInteger const kAvatarMarginH = 10;
         [keyWindow addSubview:self.custormMenu];
         
         CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
-        CGFloat itemW = 53;
+        CGFloat itemW = 50;
         CGRect targetRectInWindow = [self.contentView convertRect:self.bubbleView.frame toView:keyWindow];
         CGFloat targetCenterX = targetRectInWindow.origin.x + targetRectInWindow.size.width/2;
         CGFloat menuW = self.custormMenu.itemCount * itemW;

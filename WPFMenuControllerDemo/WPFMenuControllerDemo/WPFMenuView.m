@@ -156,7 +156,10 @@
 - (UIImageView *)backgroundImageView {
     if (!_backgroundImageView) {
         _backgroundImageView = [[UIImageView alloc] init];
-        _backgroundImageView.image = [UIImage imageNamed:@"longpress_bg"];
+        UIImage *bgImage = [UIImage imageNamed:@"longpress_bg"];
+        CGFloat left = bgImage.size.width * 0.5;
+        CGFloat top = bgImage.size.height * 0.5;
+        _backgroundImageView.image = [bgImage stretchableImageWithLeftCapWidth:left topCapHeight:top];
     }
     return _backgroundImageView;
 }
@@ -171,11 +174,12 @@
 - (UIButton *)revokeButton {
     if (!_revokeButton) {
         _revokeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_revokeButton setTitle:@"点赞" forState:UIControlStateNormal];
+        [_revokeButton setTitle:@"撤回" forState:UIControlStateNormal];
         [_revokeButton setImage:[UIImage imageNamed:@"revoke"] forState:UIControlStateNormal];
         [_revokeButton.titleLabel setFont: [UIFont systemFontOfSize:12]];
         [_revokeButton setTitleColor:[UIColor colorWithHexaString:@"d4d4d41.00"] forState:UIControlStateNormal];
         [_revokeButton addTarget:self action:@selector(thumbupButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+        [_revokeButton wpf_setImagePosition:WPFImagePositionTop spacing:3];
     }
     return _revokeButton;
 }
@@ -235,7 +239,7 @@
 - (UIButton *)collectButton {
     if (!_collectButton) {
         _collectButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_collectButton setTitle:@"预览" forState:UIControlStateNormal];
+        [_collectButton setTitle:@"收藏" forState:UIControlStateNormal];
         [_collectButton setImage:[UIImage imageNamed:@"favorite"] forState:UIControlStateNormal];
         [_collectButton.titleLabel setFont: [UIFont systemFontOfSize:12]];
         [_collectButton setTitleColor:[UIColor colorWithHexaString:@"d4d4d41.00"] forState:UIControlStateNormal];
