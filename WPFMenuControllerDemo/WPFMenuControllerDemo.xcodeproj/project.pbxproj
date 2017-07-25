@@ -19,6 +19,8 @@
 		350D7D031F21D19D00CE352D /* WPFBaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7D021F21D19D00CE352D /* WPFBaseTableViewCell.m */; };
 		350D7D071F21D3F200CE352D /* WPFMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7D061F21D3F200CE352D /* WPFMenuView.m */; };
 		350D7D0A1F21D6AA00CE352D /* WPFTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 350D7D091F21D6AA00CE352D /* WPFTextTableViewCell.m */; };
+		351C71AC1F273C4B006EE134 /* UIButton+ImageTitleSpacing.m in Sources */ = {isa = PBXBuildFile; fileRef = 351C71AB1F273C4B006EE134 /* UIButton+ImageTitleSpacing.m */; };
+		351C71AF1F2743B6006EE134 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 351C71AE1F2743B6006EE134 /* UIColor+HexColor.m */; };
 		CA20A03F9B0D2B0F6D1B7C63 /* Pods_WPFMenuControllerDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3041A9F1A0AAAD5511D1E7F1 /* Pods_WPFMenuControllerDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,10 @@
 		350D7D061F21D3F200CE352D /* WPFMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPFMenuView.m; sourceTree = "<group>"; };
 		350D7D081F21D6AA00CE352D /* WPFTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPFTextTableViewCell.h; sourceTree = "<group>"; };
 		350D7D091F21D6AA00CE352D /* WPFTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPFTextTableViewCell.m; sourceTree = "<group>"; };
+		351C71AA1F273C4B006EE134 /* UIButton+ImageTitleSpacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+ImageTitleSpacing.h"; sourceTree = "<group>"; };
+		351C71AB1F273C4B006EE134 /* UIButton+ImageTitleSpacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+ImageTitleSpacing.m"; sourceTree = "<group>"; };
+		351C71AD1F2743B6006EE134 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
+		351C71AE1F2743B6006EE134 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		4BF348EA08CB39F0F0AEEE34 /* Pods-WPFMenuControllerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WPFMenuControllerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WPFMenuControllerDemo/Pods-WPFMenuControllerDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		D6465403F5D0A2D96E7FAD2D /* Pods-WPFMenuControllerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WPFMenuControllerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WPFMenuControllerDemo/Pods-WPFMenuControllerDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +178,7 @@
 		350D7CEE1F21A8AB00CE352D /* SimpleDemo */ = {
 			isa = PBXGroup;
 			children = (
+				351C71A91F273C39006EE134 /* Category */,
 				350D7CFA1F21B35B00CE352D /* View */,
 				350D7CF91F21B34F00CE352D /* Model */,
 			);
@@ -207,6 +214,17 @@
 				350D7D061F21D3F200CE352D /* WPFMenuView.m */,
 			);
 			name = CustormMenuController;
+			sourceTree = "<group>";
+		};
+		351C71A91F273C39006EE134 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				351C71AA1F273C4B006EE134 /* UIButton+ImageTitleSpacing.h */,
+				351C71AB1F273C4B006EE134 /* UIButton+ImageTitleSpacing.m */,
+				351C71AD1F2743B6006EE134 /* UIColor+HexColor.h */,
+				351C71AE1F2743B6006EE134 /* UIColor+HexColor.m */,
+			);
+			name = Category;
 			sourceTree = "<group>";
 		};
 		DBF9A44FF6FEBC797631ACB8 /* Pods */ = {
@@ -408,7 +426,9 @@
 				350D7D031F21D19D00CE352D /* WPFBaseTableViewCell.m in Sources */,
 				350D7D0A1F21D6AA00CE352D /* WPFTextTableViewCell.m in Sources */,
 				350D7D001F21CC3D00CE352D /* WPFTableView.m in Sources */,
+				351C71AF1F2743B6006EE134 /* UIColor+HexColor.m in Sources */,
 				350D7CBD1F21A6D500CE352D /* main.m in Sources */,
+				351C71AC1F273C4B006EE134 /* UIButton+ImageTitleSpacing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
