@@ -82,36 +82,42 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(menuToThumbup)]) {
         [self.delegate menuToThumbup];
     }
+    [self removeFromSuperview];
 }
 
 - (void)copyButtonTapped:(UIButton *)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(menuToCopy)]) {
         [self.delegate menuToCopy];
     }
+    [self removeFromSuperview];
 }
 
 - (void)transmitButtonTapped:(UIButton *)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(menuToTransmit)]) {
         [self.delegate menuToTransmit];
     }
+    [self removeFromSuperview];
 }
 
 - (void)deleteButtonTapped:(UIButton *)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(menutoDelete)]) {
         [self.delegate menutoDelete];
     }
+    [self removeFromSuperview];
 }
 
 - (void)downloadButtonTapped:(UIButton *)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(menuToDowanload)]) {
         [self.delegate menuToDowanload];
     }
+    [self removeFromSuperview];
 }
 
 - (void)previewButtonTapped:(UIButton *)sender {
     if (self.delegate && [self.delegate respondsToSelector:@selector(menuToPreview)]) {
         [self.delegate menuToPreview];
     }
+    [self removeFromSuperview];
 }
 
 

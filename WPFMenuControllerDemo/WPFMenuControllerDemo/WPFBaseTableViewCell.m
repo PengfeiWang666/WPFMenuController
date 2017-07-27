@@ -97,6 +97,13 @@ static NSInteger const kAvatarMarginH = 10;
 
 - (void)longPressOnBubble:(UILongPressGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {
+        
+        if (self.message.msgDirection == WPFMessageDirectionIncoming) {
+            [self.custormMenu setItemType:MenuItemTypeCopy | MenuItemTypeTransmit | MenuItemTypeCollect | MenuItemTypeDelete];
+        } else {
+            [self.custormMenu setItemType:MenuItemTypeCopy | MenuItemTypeTransmit | MenuItemTypeCollect | MenuItemTypeRevoke | MenuItemTypeDelete];
+        }
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:WPFMenuControllerWillHideMenuNoti object:nil];
         
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
@@ -141,11 +148,7 @@ static NSInteger const kAvatarMarginH = 10;
     NSString *imageName = message.msgDirection == WPFMessageDirectionIncoming ? @"liuyifei" : @"xiaohuangren";
     [self.avatarHeaderView setImage:[UIImage imageNamed:imageName]];
     
-    if (message.msgDirection == WPFMessageDirectionIncoming) {
-        [self.custormMenu setItemType:MenuItemTypeCopy | MenuItemTypeTransmit | MenuItemTypeCollect | MenuItemTypeDelete];
-    } else {
-        [self.custormMenu setItemType:MenuItemTypeCopy | MenuItemTypeTransmit | MenuItemTypeCollect | MenuItemTypeRevoke | MenuItemTypeDelete];
-    }
+
 }
 
 - (WPFMenuView *)custormMenu {
