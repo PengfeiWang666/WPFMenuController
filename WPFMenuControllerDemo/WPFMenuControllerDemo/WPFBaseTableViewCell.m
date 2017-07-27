@@ -97,7 +97,7 @@ static NSInteger const kAvatarMarginH = 10;
 
 - (void)longPressOnBubble:(UILongPressGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"WPFMenuControllerWillHideMenuNotification" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:WPFMenuControllerWillHideMenuNoti object:nil];
         
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
         [keyWindow addSubview:self.custormMenu];
@@ -107,7 +107,7 @@ static NSInteger const kAvatarMarginH = 10;
         CGRect targetRectInWindow = [self.contentView convertRect:self.bubbleView.frame toView:keyWindow];
         CGFloat targetCenterX = targetRectInWindow.origin.x + targetRectInWindow.size.width/2;
         CGFloat menuW = self.custormMenu.itemCount * itemW;
-        CGFloat menuH = 62;
+        CGFloat menuH = 58;
         CGFloat menuX = targetCenterX - menuW/2 > 0 ? targetCenterX - menuW/2 : 0;
         menuX = menuX + menuW > screenW ? screenW - menuW : menuX;
         CGFloat menuY = targetRectInWindow.origin.y - menuH;
@@ -119,7 +119,7 @@ static NSInteger const kAvatarMarginH = 10;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(hideMenuNotiAction)
-                                                     name:@"WPFMenuControllerWillHideMenuNotification"
+                                                     name:WPFMenuControllerWillHideMenuNoti
                                                    object:nil];
     }
 }

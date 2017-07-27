@@ -4,7 +4,7 @@
 //
 //  Created by Leon on 2017/7/21.
 //  Copyright © 2017年 Leon. All rights reserved.
-//
+// warning:如果使用该控件，在合适的地方需要发送通知来告知该控件隐藏，比如
 
 #import <UIKit/UIKit.h>
 

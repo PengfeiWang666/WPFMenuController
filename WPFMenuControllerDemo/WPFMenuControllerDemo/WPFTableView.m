@@ -108,6 +108,10 @@
     }
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [[NSNotificationCenter defaultCenter] postNotificationName:WPFMenuControllerWillHideMenuNoti object:nil];
+}
+
 #pragma mark - setters && getters
 
 - (NSMutableArray *)messageData {

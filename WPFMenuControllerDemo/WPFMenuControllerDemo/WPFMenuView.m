@@ -13,7 +13,7 @@
 #import "UIButton+ImageTitleSpacing.h"
 
 @interface WPFMenuView ()
-
+// 如果需要适配 iOS8，自行用 Masonry 进行布局
 @property (nonatomic, strong) UIStackView *containerView;
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIImageView *arrowImageView;
@@ -122,7 +122,8 @@
     CGFloat margin = 3;
     [self.backgroundImageView addSubview:self.containerView];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.backgroundImageView);
+        make.leading.trailing.bottom.equalTo(self.backgroundImageView);
+        make.top.equalTo(self.backgroundImageView).offset(8);
     }];
     
     if (itemType == (MenuItemTypeCopy | MenuItemTypeTransmit | MenuItemTypeCollect | MenuItemTypeDelete)) {
