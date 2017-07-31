@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSUInteger, MenuItemType) {
-    MenuItemTypeCopy        = 0,
-    MenuItemTypeTransmit    = 1 << 0,
-    MenuItemTypeCollect     = 1 << 1,
-    MenuItemTypeDelete      = 1 << 2,
-    MenuItemTypeRevoke      = 1 << 3,
-    MenuItemTypeDownload    = 1 << 4,
+    MenuItemTypeCopy        = 1 << 0,
+    MenuItemTypeTransmit    = 1 << 1,
+    MenuItemTypeCollect     = 1 << 2,
+    MenuItemTypeDelete      = 1 << 3,
+    MenuItemTypeRevoke      = 1 << 4,
+    MenuItemTypeDownload    = 1 << 5,
 };
 
 @protocol WPFMenuViewDelegate <NSObject>
