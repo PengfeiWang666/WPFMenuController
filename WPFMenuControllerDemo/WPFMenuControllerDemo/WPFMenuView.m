@@ -40,14 +40,25 @@
 #pragma mark - public method
 
 
-
 #pragma - event response
 
-- (void)setFrame:(CGRect)frame targetRect:(CGRect)targetRect {
+- (void)setTargetRect:(CGRect)targetRect {
+    
+    CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
+    CGFloat itemW = 50;
+    CGFloat targetCenterX = targetRect.origin.x + targetRect.size.width/2;
+    CGFloat menuW = self.itemCount * itemW;
+    CGFloat menuH = 58;
+    CGFloat menuX = targetCenterX - menuW/2 > 0 ? targetCenterX - menuW/2 : 0;
+    menuX = menuX + menuW > screenW ? screenW - menuW : menuX;
+    CGFloat menuY = targetRect.origin.y - menuH;
+    menuY = menuY < 20 ? targetRect.origin.y + targetRect.size.height : menuY;
+    
+    CGRect frame = CGRectMake(menuX, menuY, menuW, menuH);
+    
     [super setFrame:frame];
     CGFloat arrowH = 8;
     CGFloat arrowW = 12;
-    
     
     if (frame.origin.y > targetRect.origin.y) {
         // 箭头向上
@@ -124,8 +135,6 @@
 #pragma mark - setters && getters
 
 - (void)setItemType:(MenuItemType)itemType {
-    CGFloat buttonH = 54;
-    CGFloat margin = 3;
     [self.backgroundImageView addSubview:self.containerView];
     [self.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.bottom.equalTo(self.backgroundImageView);
@@ -156,6 +165,7 @@
     if (!_containerView) {
         _containerView = [[UIStackView alloc] init];
         _containerView.alignment = UIStackViewAlignmentFill;
+        _containerView.userInteractionEnabled = YES;
     }
     return _containerView;
 }
@@ -167,6 +177,7 @@
         CGFloat left = bgImage.size.width * 0.5;
         CGFloat top = bgImage.size.height * 0.5;
         _backgroundImageView.image = [bgImage stretchableImageWithLeftCapWidth:left topCapHeight:top];
+        _backgroundImageView.userInteractionEnabled = YES;
     }
     return _backgroundImageView;
 }

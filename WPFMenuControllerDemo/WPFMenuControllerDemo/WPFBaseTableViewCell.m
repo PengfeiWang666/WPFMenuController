@@ -12,7 +12,7 @@
 static NSInteger const kAvatarSize = 45;
 static NSInteger const kAvatarMarginH = 10;
 
-@interface WPFBaseTableViewCell ()
+@interface WPFBaseTableViewCell () <WPFMenuViewDelegate>
 
 /** 头像 */
 @property (nonatomic, strong) UIImageView *avatarHeaderView;
@@ -21,6 +21,7 @@ static NSInteger const kAvatarMarginH = 10;
 
 @implementation WPFBaseTableViewCell
 
+#pragma mark - build
 - (instancetype)initWithStyle:(UITableViewCellStyle)style
               reuseIdentifier:(NSString*)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -38,9 +39,6 @@ static NSInteger const kAvatarMarginH = 10;
     
     //头像约束
     [self.contentView addSubview:self.avatarHeaderView];
-    
-    CGFloat margin = 6;
-    
     self.bubbleView = [[UIImageView alloc] init];
     self.bubbleView.userInteractionEnabled = true;
     [self.contentView addSubview:self.bubbleView];
@@ -95,6 +93,7 @@ static NSInteger const kAvatarMarginH = 10;
     [self.bubbleView addGestureRecognizer:bubblelongPress];
 }
 
+#pragma mark - Private Method
 - (void)longPressOnBubble:(UILongPressGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {
         
@@ -109,20 +108,9 @@ static NSInteger const kAvatarMarginH = 10;
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
         [keyWindow addSubview:self.custormMenu];
         
-        CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
-        CGFloat itemW = 50;
         CGRect targetRectInWindow = [self.contentView convertRect:self.bubbleView.frame toView:keyWindow];
-        CGFloat targetCenterX = targetRectInWindow.origin.x + targetRectInWindow.size.width/2;
-        CGFloat menuW = self.custormMenu.itemCount * itemW;
-        CGFloat menuH = 58;
-        CGFloat menuX = targetCenterX - menuW/2 > 0 ? targetCenterX - menuW/2 : 0;
-        menuX = menuX + menuW > screenW ? screenW - menuW : menuX;
-        CGFloat menuY = targetRectInWindow.origin.y - menuH;
-        menuY = menuY < 20 ? targetRectInWindow.origin.y + targetRectInWindow.size.height : menuY;
         
-        CGRect frame = CGRectMake(menuX, menuY, menuW, menuH);
-        
-        [self.custormMenu setFrame:frame targetRect:targetRectInWindow];
+        [self.custormMenu setTargetRect:targetRectInWindow];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(hideMenuNotiAction)
@@ -142,7 +130,33 @@ static NSInteger const kAvatarMarginH = 10;
     return CGSizeMake(size.width, totalHeight);
 }
 
+#pragma mark - WPFMenuViewDelegate
+- (void)menuToThumbup {
+    NSLog(@"menuToThumbupTapped");
+}
 
+- (void)menuToCopy {
+    NSLog(@"menuToCopyTapped");
+}
+
+- (void)menutoDelete {
+    NSLog(@"menutoDeleteTapped");
+}
+
+- (void)menuToPreview {
+    NSLog(@"menuToPreviewTapped");
+}
+
+- (void)menuToTransmit {
+    NSLog(@"menuToTransmitTapped");
+}
+
+- (void)menuToDowanload {
+    NSLog(@"menuToDowanloadTapped");
+}
+
+
+#pragma mark - setter && getter
 - (void)setMessage:(WPFMessage *)message {
     _message = message;
     NSString *imageName = message.msgDirection == WPFMessageDirectionIncoming ? @"liuyifei" : @"xiaohuangren";
@@ -154,6 +168,7 @@ static NSInteger const kAvatarMarginH = 10;
 - (WPFMenuView *)custormMenu {
     if (!_custormMenu) {
         _custormMenu = [[WPFMenuView alloc] init];
+        _custormMenu.delegate = self;
     }
     return _custormMenu;
 }

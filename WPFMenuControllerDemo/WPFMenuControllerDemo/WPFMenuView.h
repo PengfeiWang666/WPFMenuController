@@ -38,7 +38,7 @@ typedef NS_ENUM(NSUInteger, MenuItemType) {
 @property (nonatomic, assign) id<WPFMenuViewDelegate> delegate;
 
 
-- (void)setFrame:(CGRect)frame targetRect:(CGRect)targetRect;
+- (void)setTargetRect:(CGRect)targetRect;
 
 @end
 
