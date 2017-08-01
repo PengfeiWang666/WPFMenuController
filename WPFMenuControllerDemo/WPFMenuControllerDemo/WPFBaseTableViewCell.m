@@ -37,6 +37,7 @@ static NSInteger const kAvatarMarginH = 10;
     self.contentView.backgroundColor = [UIColor colorWithWhite:241/255.0 alpha:1];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    
     //头像约束
     [self.contentView addSubview:self.avatarHeaderView];
     self.bubbleView = [[UIImageView alloc] init];
@@ -52,7 +53,7 @@ static NSInteger const kAvatarMarginH = 10;
     if (self.alignement == MessageAlignementLeft) {
         
         UIImage *bubbleImage = [UIImage imageNamed:@"qq_bubble_b"];
-        self.bubbleView.image = [bubbleImage stretchableImageWithLeftCapWidth:13 topCapHeight:15];
+        self.bubbleView.image = [bubbleImage stretchableImageWithLeftCapWidth:18 topCapHeight:15];
         [self.avatarHeaderView mas_makeConstraints:^(MASConstraintMaker* make) {
             make.top.equalTo(self.contentView);
             make.width.height.mas_equalTo(kAvatarSize);
@@ -71,7 +72,7 @@ static NSInteger const kAvatarMarginH = 10;
         
     } else {
         UIImage *bubbleImage = [UIImage imageNamed:@"qq_bubble_a"];
-        self.bubbleView.image = [bubbleImage stretchableImageWithLeftCapWidth:5 topCapHeight:15];
+        self.bubbleView.image = [bubbleImage stretchableImageWithLeftCapWidth:14 topCapHeight:15];
         [self.avatarHeaderView mas_makeConstraints:^(MASConstraintMaker* make) {
             make.top.equalTo(self.contentView);
             make.width.height.mas_equalTo(kAvatarSize);
