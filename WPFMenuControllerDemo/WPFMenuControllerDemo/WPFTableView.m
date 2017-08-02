@@ -125,7 +125,7 @@
         
         WPFMessage *message2 = [[WPFMessage alloc] init];
         message2.msgType = WPFMessageTypeText;
-        message2.msgBody = @"这是一条测试数据";
+        message2.msgBody = @"这是一条测试数据哈哈哈哈哈哈哈哈哈哈哈哈哈或哈哈或哈哈或或或或或或哈哈哈哈哈哈哈或哈哈或哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或";
         message2.msgDirection = WPFMessageDirectionOutcoming;
         
         WPFMessage *message3 = [[WPFMessage alloc] init];

@@ -37,7 +37,6 @@ static NSInteger const kAvatarMarginH = 10;
     self.contentView.backgroundColor = [UIColor colorWithWhite:241/255.0 alpha:1];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    
     //头像约束
     [self.contentView addSubview:self.avatarHeaderView];
     self.bubbleView = [[UIImageView alloc] init];
@@ -69,7 +68,6 @@ static NSInteger const kAvatarMarginH = 10;
             make.right.lessThanOrEqualTo(self.contentView).offset(-73);
             //            make.bottom.equalTo(self.thumbUpButton.mas_top);
         }];
-        
     } else {
         UIImage *bubbleImage = [UIImage imageNamed:@"qq_bubble_a"];
         self.bubbleView.image = [bubbleImage stretchableImageWithLeftCapWidth:14 topCapHeight:15];
