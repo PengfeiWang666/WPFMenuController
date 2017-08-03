@@ -49,6 +49,8 @@ static NSInteger const kAvatarMarginH = 10;
     self.avatarHeaderView.layer.masksToBounds = YES;
     [self.contentView addSubview:self.avatarHeaderView];
     
+    
+    
     if (self.alignement == MessageAlignementLeft) {
         
         UIImage *bubbleImage = [UIImage imageNamed:@"qq_bubble_b"];
@@ -66,7 +68,8 @@ static NSInteger const kAvatarMarginH = 10;
             make.left.equalTo(self.contentView).offset(kAvatarSize + 18);
             //这个地方必须制定contentView，不指定的话没有效果
             make.right.lessThanOrEqualTo(self.contentView).offset(-73);
-            //            make.bottom.equalTo(self.thumbUpButton.mas_top);
+//            make.bottom.equalTo(self.contentView).offset(-10).priorityLow();
+            make.bottom.offset(-5).priorityLow();
         }];
     } else {
         UIImage *bubbleImage = [UIImage imageNamed:@"qq_bubble_a"];
@@ -82,7 +85,8 @@ static NSInteger const kAvatarMarginH = 10;
             make.top.equalTo(self.contentView);
             make.right.equalTo(self.contentView).offset(-kAvatarSize - 18);
             make.left.greaterThanOrEqualTo(self.contentView).offset(73);
-            //            make.bottom.equalTo(self.thumbUpButton.mas_top);
+//                        make.bottom.equalTo(self.contentView).offset(-10).priorityLow();
+            make.bottom.offset(-5).priorityLow();
         }];
     }
 }
@@ -120,13 +124,6 @@ static NSInteger const kAvatarMarginH = 10;
 
 - (void)hideMenuNotiAction {
     [self.custormMenu removeFromSuperview];
-}
-
-- (CGSize)sizeThatFits:(CGSize)size {
-    CGFloat totalHeight = 0;
-    totalHeight += [self.bubbleView sizeThatFits:size].height;
-    totalHeight += 24;
-    return CGSizeMake(size.width, totalHeight);
 }
 
 #pragma mark - WPFMenuViewDelegate

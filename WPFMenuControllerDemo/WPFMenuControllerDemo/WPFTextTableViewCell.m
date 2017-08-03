@@ -43,10 +43,12 @@
 
 - (void)setMessage:(WPFMessage *)message {
     
-    
     self.textView.text = message.msgBody;
+    [self.textView sizeToFit];
     
     [super setMessage:message];
 }
+
+
 
 @end
