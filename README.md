@@ -3,4 +3,4 @@
 
 效果如图所示
 
- ![](WPFMenuController/WPFMenuControllerDemo/WPFMenuControllerDemo/demo.gif)
+ ![](https://github.com/PengfeiWang666/WPFMenuController/blob/master/WPFMenuControllerDemo/WPFMenuControllerDemo/demo.gif)
