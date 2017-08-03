@@ -3,7 +3,7 @@
 
 效果如图所示
 
- ![](https://github.com/PengfeiWang666/WPFMenuController/blob/master/WPFMenuControllerDemo/WPFMenuControllerDemo/demo2.gif)
+ ![](https://github.com/PengfeiWang666/WPFMenuController/blob/master/WPFMenuControllerDemo/WPFMenuControllerDemo/demo2.png)
 
 
 ![](https://github.com/PengfeiWang666/WPFMenuController/blob/master/WPFMenuControllerDemo/WPFMenuControllerDemo/demo1.gif)
