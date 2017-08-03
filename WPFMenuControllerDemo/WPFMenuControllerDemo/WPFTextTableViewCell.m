@@ -22,7 +22,8 @@
     [super buildCell];
     self.textView = [[UILabel alloc] init];
     self.textView.numberOfLines = 0;
-//    [UIFont fontWithName:@"PingFangSC-Regular" size:16];
+//    self.textView.backgroundColor = [UIColor redColor];
+    [self.textView setFont:[UIFont fontWithName:@"PingFangSC-Regular" size:16]];
     [self.bubbleView addSubview:self.textView];
     
     if (self.alignement == MessageAlignementRight) {
@@ -37,7 +38,7 @@
         }];
     }
     
-    [self.textView setContentHuggingPriority:1000 forAxis:UILayoutConstraintAxisVertical];
+//    [self.textView setContentHuggingPriority:1000 forAxis:UILayoutConstraintAxisVertical];
 }
 
 - (void)setMessage:(WPFMessage *)message {

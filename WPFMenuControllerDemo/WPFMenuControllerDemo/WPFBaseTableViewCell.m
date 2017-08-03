@@ -8,6 +8,7 @@
 
 #import "WPFBaseTableViewCell.h"
 #import "Masonry.h"
+#import "UIColor+HexColor.h"
 
 static NSInteger const kAvatarSize = 45;
 static NSInteger const kAvatarMarginH = 10;
@@ -49,28 +50,28 @@ static NSInteger const kAvatarMarginH = 10;
     self.avatarHeaderView.layer.masksToBounds = YES;
     [self.contentView addSubview:self.avatarHeaderView];
     
-    
+    UIView *test = [[UIView alloc] init];
+    [self.contentView addSubview:test];
     
     if (self.alignement == MessageAlignementLeft) {
         
         UIImage *bubbleImage = [UIImage imageNamed:@"qq_bubble_b"];
-        self.bubbleView.image = [bubbleImage stretchableImageWithLeftCapWidth:18 topCapHeight:15];
+        self.bubbleView.image = [bubbleImage stretchableImageWithLeftCapWidth:20 topCapHeight:15];
         [self.avatarHeaderView mas_makeConstraints:^(MASConstraintMaker* make) {
             make.top.equalTo(self.contentView);
             make.width.height.mas_equalTo(kAvatarSize);
             make.leading.offset(kAvatarMarginH);
         }];
-        
+
         [self.bubbleView mas_makeConstraints:^(MASConstraintMaker* make) {
             make.width.lessThanOrEqualTo(self.contentView);
             make.top.equalTo(self.contentView);
-            //指view的左边在avatar的右边，边距为5
             make.left.equalTo(self.contentView).offset(kAvatarSize + 18);
-            //这个地方必须制定contentView，不指定的话没有效果
+            //这个地方必须指定contentView，不指定的话没有效果
             make.right.lessThanOrEqualTo(self.contentView).offset(-73);
-//            make.bottom.equalTo(self.contentView).offset(-10).priorityLow();
             make.bottom.offset(-5).priorityLow();
         }];
+        
     } else {
         UIImage *bubbleImage = [UIImage imageNamed:@"qq_bubble_a"];
         self.bubbleView.image = [bubbleImage stretchableImageWithLeftCapWidth:14 topCapHeight:15];
@@ -89,6 +90,12 @@ static NSInteger const kAvatarMarginH = 10;
             make.bottom.offset(-5).priorityLow();
         }];
     }
+//    [test mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.leading.trailing.equalTo(self.contentView);
+//        make.bottom.offset(0);
+//        make.height.mas_equalTo(20);
+//        make.top.equalTo(self.bubbleView.mas_bottom);
+//    }];
 }
 
 - (void)bindGestureRecognizer {
@@ -157,8 +164,6 @@ static NSInteger const kAvatarMarginH = 10;
     _message = message;
     NSString *imageName = message.msgDirection == WPFMessageDirectionIncoming ? @"liuyifei" : @"xiaohuangren";
     [self.avatarHeaderView setImage:[UIImage imageNamed:imageName]];
-    
-
 }
 
 - (WPFMenuView *)custormMenu {
