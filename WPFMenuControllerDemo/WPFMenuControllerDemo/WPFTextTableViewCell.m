@@ -22,7 +22,6 @@
     [super buildCell];
     self.textView = [[UILabel alloc] init];
     self.textView.numberOfLines = 0;
-    self.textView.backgroundColor = [UIColor redColor];
 //    [UIFont fontWithName:@"PingFangSC-Regular" size:16];
     [self.bubbleView addSubview:self.textView];
     

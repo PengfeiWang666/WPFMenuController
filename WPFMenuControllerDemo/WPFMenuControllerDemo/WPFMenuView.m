@@ -61,17 +61,18 @@
     [self setFrame:frame];
     CGFloat arrowH = 8;
     CGFloat arrowW = 12;
+    CGFloat arrowX = targetRect.origin.x-frame.origin.x+0.5*targetRect.size.width-arrowW/2;
     
     if (frame.origin.y > targetRect.origin.y) {
         // 箭头向上
         self.backgroundImageView.frame = CGRectMake(0, arrowH, menuW, menuH-arrowH);
         self.arrowImageView.image = [UIImage imageNamed:@"longpress_up_arrow"];
-        self.arrowImageView.frame = CGRectMake(targetRect.origin.x-frame.origin.x+0.5*targetRect.size.width, 0, arrowW, arrowH);
+        self.arrowImageView.frame = CGRectMake(arrowX, 0, arrowW, arrowH);
     } else {
         // 箭头向下
         self.backgroundImageView.frame = CGRectMake(0, 0, menuW, menuH-arrowH);
         self.arrowImageView.image = [UIImage imageNamed:@"longpress_down_arrow"];
-        self.arrowImageView.frame = CGRectMake(targetRect.origin.x-frame.origin.x+0.5*targetRect.size.width-arrowW/2, menuH-arrowH, arrowW, arrowH);
+        self.arrowImageView.frame = CGRectMake(arrowX, menuH-arrowH, arrowW, arrowH);
     }
 }
 
