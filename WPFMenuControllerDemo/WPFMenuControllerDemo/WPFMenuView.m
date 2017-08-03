@@ -47,13 +47,16 @@
     CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
     CGFloat screenH = [UIScreen mainScreen].bounds.size.height;
     CGFloat itemW = 50;
+    // 保证箭头在targetRect中心
     CGFloat targetCenterX = targetRect.origin.x + targetRect.size.width/2;
     CGFloat menuW = self.itemCount * itemW;
     CGFloat menuH = 58;
     CGFloat menuX = targetCenterX - menuW/2 > 0 ? targetCenterX - menuW/2 : 0;
     menuX = menuX + menuW > screenW ? screenW - menuW : menuX;
     CGFloat menuY = targetRect.origin.y - menuH;
+    // 避免 MenuController 过于靠上
     menuY = menuY < 20 ? targetRect.origin.y + targetRect.size.height : menuY;
+    // 适配特别长的文本，直接显示在屏幕中间
     menuY = menuY > screenH-menuH-30 ? screenH / 2 : menuY;
     
     CGRect frame = CGRectMake(menuX, menuY, menuW, menuH);

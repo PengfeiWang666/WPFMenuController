@@ -107,6 +107,7 @@ static NSInteger const kAvatarMarginH = 10;
 - (void)longPressOnBubble:(UILongPressGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {
         
+        // 收到别人发送的消息不包含撤回，自己发送的消息包含撤回
         if (self.message.msgDirection == WPFMessageDirectionIncoming) {
             [self.custormMenu setItemType:MenuItemTypeCopy | MenuItemTypeTransmit | MenuItemTypeCollect | MenuItemTypeDelete];
         } else {
@@ -117,7 +118,7 @@ static NSInteger const kAvatarMarginH = 10;
         
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
         [keyWindow addSubview:self.custormMenu];
-        
+        // 计算frame封装在控件内部，使用的时候只要传一个 targetRect 参数即可
         CGRect targetRectInWindow = [self.contentView convertRect:self.bubbleView.frame toView:keyWindow];
         
         [self.custormMenu setTargetRect:targetRectInWindow];
