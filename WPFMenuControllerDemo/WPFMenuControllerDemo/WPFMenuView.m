@@ -45,6 +45,7 @@
 - (void)setTargetRect:(CGRect)targetRect {
     
     CGFloat screenW = [UIScreen mainScreen].bounds.size.width;
+    CGFloat screenH = [UIScreen mainScreen].bounds.size.height;
     CGFloat itemW = 50;
     CGFloat targetCenterX = targetRect.origin.x + targetRect.size.width/2;
     CGFloat menuW = self.itemCount * itemW;
@@ -53,39 +54,24 @@
     menuX = menuX + menuW > screenW ? screenW - menuW : menuX;
     CGFloat menuY = targetRect.origin.y - menuH;
     menuY = menuY < 20 ? targetRect.origin.y + targetRect.size.height : menuY;
+    menuY = menuY > screenH-menuH-30 ? screenH / 2 : menuY;
     
     CGRect frame = CGRectMake(menuX, menuY, menuW, menuH);
     
-    [super setFrame:frame];
+    [self setFrame:frame];
     CGFloat arrowH = 8;
     CGFloat arrowW = 12;
     
     if (frame.origin.y > targetRect.origin.y) {
         // 箭头向上
-        [self.backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.trailing.bottom.equalTo(self);
-            make.top.mas_offset(arrowH);
-        }];
+        self.backgroundImageView.frame = CGRectMake(0, arrowH, menuW, menuH-arrowH);
         self.arrowImageView.image = [UIImage imageNamed:@"longpress_up_arrow"];
-        [self.arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(arrowW);
-            make.height.mas_equalTo(arrowH);
-            make.top.equalTo(self);
-            make.leading.mas_equalTo(targetRect.origin.x-frame.origin.x+0.5*targetRect.size.width);
-        }];
+        self.arrowImageView.frame = CGRectMake(targetRect.origin.x-frame.origin.x+0.5*targetRect.size.width, 0, arrowW, arrowH);
     } else {
         // 箭头向下
-        [self.backgroundImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.leading.trailing.top.equalTo(self);
-            make.bottom.mas_offset(-arrowH);
-        }];
+        self.backgroundImageView.frame = CGRectMake(0, 0, menuW, menuH-arrowH);
         self.arrowImageView.image = [UIImage imageNamed:@"longpress_down_arrow"];
-        [self.arrowImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(arrowW);
-            make.height.mas_equalTo(arrowH);
-            make.bottom.equalTo(self);
-            make.leading.mas_equalTo(targetRect.origin.x-frame.origin.x+0.5*targetRect.size.width-arrowW/2);
-        }];
+        self.arrowImageView.frame = CGRectMake(targetRect.origin.x-frame.origin.x+0.5*targetRect.size.width-arrowW/2, menuH-arrowH, arrowW, arrowH);
     }
 }
 

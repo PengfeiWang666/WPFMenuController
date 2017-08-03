@@ -60,8 +60,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WPFMessage *message = self.messageData[indexPath.row];
-    WPFTextTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:message.identifier];
-    return cell;
+    if (message.msgType == WPFMessageTypeText) {
+        WPFTextTableViewCell *textCell = [tableView dequeueReusableCellWithIdentifier:message.identifier];
+        return textCell;
+    } else {
+        // 为以后其他类型预留
+        WPFBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:message.identifier];
+        return cell;
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -77,21 +83,21 @@
 - (CGFloat)tableView:(UITableView*)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath {
 
     WPFMessage *message = self.messageData[indexPath.row];
-    __block CGFloat height = message.height;
+    CGFloat height = message.height;
     
-    __weak WPFTableView *weakSelf = self;
-    
-    CGFloat tableViewWidth = tableView.frame.size.width;
-    
-    if (tableViewWidth > 0){
-        height = [self
-                  fd_heightForCellWithIdentifier:message.identifier
-                  cacheByIndexPath:indexPath
-                  configuration:^(WPFBaseTableViewCell* cell) {
-                      
-                      [weakSelf configureCell:cell atIndexPath:indexPath];
-                  }];
+    if (!height) {
+        CGFloat tableViewWidth = tableView.frame.size.width;
+        __weak WPFTableView *weakSelf = self;
+        if (tableViewWidth > 0){
+            height = [self
+                      fd_heightForCellWithIdentifier:message.identifier
+                      cacheByIndexPath:indexPath
+                      configuration:^(WPFBaseTableViewCell* cell) {
+                          [weakSelf configureCell:cell atIndexPath:indexPath];
+                      }];
+        }
     }
+    
     message.height = height;
     return height;
 }
@@ -125,12 +131,12 @@
         
         WPFMessage *message2 = [[WPFMessage alloc] init];
         message2.msgType = WPFMessageTypeText;
-        message2.msgBody = @"这是一条测试数据哈哈哈哈哈哈哈哈哈哈哈哈哈或哈哈或哈哈或或或或或或哈哈哈哈哈哈哈或哈哈或哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或";
+        message2.msgBody = @"这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条测试数据哈哈哈哈哈哈哈哈哈哈哈哈哈或哈哈或哈哈或或或或或或哈哈哈哈哈哈哈或哈哈或哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或";
         message2.msgDirection = WPFMessageDirectionOutcoming;
         
         WPFMessage *message3 = [[WPFMessage alloc] init];
         message3.msgType = WPFMessageTypeText;
-        message3.msgBody = @"这是一条测试数据";
+        message3.msgBody = @"这是一条一般长的测试数据这是一条一般长的测试数据这是一条一般长的测试数据这是一条一般长的测试数据这是一条一般长的测试数据这是一条一般长的测试数据";
         message3.msgDirection = WPFMessageDirectionIncoming;
         
         WPFMessage *message4 = [[WPFMessage alloc] init];
