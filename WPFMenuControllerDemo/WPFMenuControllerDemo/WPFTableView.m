@@ -126,7 +126,7 @@
         
         WPFMessage *message1 = [[WPFMessage alloc] init];
         message1.msgType = WPFMessageTypeText;
-        message1.msgBody = @"这是一条测试数据哈哈哈哈哈哈哈哈哈哈哈哈哈或哈哈或哈哈或或或或或或哈哈哈哈哈哈哈或哈哈或哈哈或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或或";
+        message1.msgBody = @"测试数据";
         message1.msgDirection = WPFMessageDirectionIncoming;
         
         WPFMessage *message2 = [[WPFMessage alloc] init];
@@ -134,20 +134,8 @@
         message2.msgBody = @"这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据这是一条很长很长很长的测试数据";
         message2.msgDirection = WPFMessageDirectionOutcoming;
         
-        WPFMessage *message3 = [[WPFMessage alloc] init];
-        message3.msgType = WPFMessageTypeText;
-        message3.msgBody = @"这是一条一般长的测试数据这是一条一般长的测试数据这是一条一般长的测试数据这是一条一般长的测试数据这是一条一般长的测试数据这是一条一般长的测试数据";
-        message3.msgDirection = WPFMessageDirectionIncoming;
-        
-        WPFMessage *message4 = [[WPFMessage alloc] init];
-        message4.msgType = WPFMessageTypeText;
-        message4.msgBody = @"这是一条测试数据";
-        message4.msgDirection = WPFMessageDirectionOutcoming;
-        
         [_messageData addObject:message1];
         [_messageData addObject:message2];
-        [_messageData addObject:message3];
-        [_messageData addObject:message4];
     }
     return _messageData;
 }

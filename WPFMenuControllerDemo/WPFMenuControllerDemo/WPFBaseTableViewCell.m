@@ -69,7 +69,7 @@ static NSInteger const kAvatarMarginH = 10;
             make.left.equalTo(self.contentView).offset(kAvatarSize + 18);
             //这个地方必须指定contentView，不指定的话没有效果
             make.right.lessThanOrEqualTo(self.contentView).offset(-73);
-            make.bottom.offset(-5).priorityLow();
+            make.bottom.offset(-20).priorityLow();
         }];
         
     } else {
@@ -87,7 +87,7 @@ static NSInteger const kAvatarMarginH = 10;
             make.right.equalTo(self.contentView).offset(-kAvatarSize - 18);
             make.left.greaterThanOrEqualTo(self.contentView).offset(73);
 //                        make.bottom.equalTo(self.contentView).offset(-10).priorityLow();
-            make.bottom.offset(-5).priorityLow();
+            make.bottom.offset(-20).priorityLow();
         }];
     }
 //    [test mas_makeConstraints:^(MASConstraintMaker *make) {
