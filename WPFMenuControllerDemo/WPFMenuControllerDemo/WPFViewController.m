@@ -22,7 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.title = @"假的聊天页面";
-    [self setupUI];
+    [self _setupUI];
     
 }
 
@@ -31,17 +31,12 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"WPFMenuControllerWillHideMenuNoti" object:nil];
 }
 
-- (void)setupUI {
+#pragma mark - Private Method
+- (void)_setupUI {
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - setters && getters

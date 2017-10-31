@@ -25,20 +25,20 @@
     self = [super init];
     if (self) {
         
-        [self registerCell];
-        [self setupUI];
-        [self setupDelegate];
+        [self _registerCell];
+        [self _setupUI];
+        [self _setupDelegate];
     }
     return self;
 }
 
-- (void)registerCell {
+- (void)_registerCell {
     //注册文本cell
     [self registerClass:[WPFTextTableViewCell class] forCellReuseIdentifier:[NSString stringWithFormat:@"%@%ld", kCellIdentifierLeft, WPFMessageTypeText]];
     [self registerClass:[WPFTextTableViewCell class] forCellReuseIdentifier:[NSString stringWithFormat:@"%@%ld", kCellIdentifierRight, WPFMessageTypeText]];
 }
 
-- (void)setupUI {
+- (void)_setupUI {
     self.backgroundColor = [UIColor colorWithWhite:241/255.0 alpha:1];
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.fd_debugLogEnabled = NO;
@@ -47,7 +47,7 @@
     self.tableHeaderView = header;
 }
 
-- (void)setupDelegate {
+- (void)_setupDelegate {
     self.delegate = self;
     self.dataSource = self;
 }
@@ -73,7 +73,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self configureCell:cell atIndexPath:indexPath];
+    [self _configureCell:cell atIndexPath:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView*)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath*)indexPath {
@@ -87,13 +87,13 @@
     
     if (!height) {
         CGFloat tableViewWidth = tableView.frame.size.width;
-        __weak WPFTableView *weakSelf = self;
+        
         if (tableViewWidth > 0){
             height = [self
                       fd_heightForCellWithIdentifier:message.identifier
                       cacheByIndexPath:indexPath
                       configuration:^(WPFBaseTableViewCell* cell) {
-                          [weakSelf configureCell:cell atIndexPath:indexPath];
+                          [self _configureCell:cell atIndexPath:indexPath];
                       }];
         }
     }
@@ -102,9 +102,15 @@
     return height;
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [[NSNotificationCenter defaultCenter] postNotificationName:WPFMenuControllerWillHideMenuNoti object:nil];
+}
+
 #pragma mark - Private Method
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)_configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     cell.fd_enforceFrameLayout = NO;
     
     WPFMessage *message = self.messageData[indexPath.row];
@@ -112,10 +118,6 @@
         WPFTextTableViewCell *textCell = (WPFTextTableViewCell *)cell;
         textCell.message = message;
     }
-}
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [[NSNotificationCenter defaultCenter] postNotificationName:WPFMenuControllerWillHideMenuNoti object:nil];
 }
 
 #pragma mark - setters && getters
@@ -139,10 +141,5 @@
     }
     return _messageData;
 }
-
-
-
-
-
 
 @end

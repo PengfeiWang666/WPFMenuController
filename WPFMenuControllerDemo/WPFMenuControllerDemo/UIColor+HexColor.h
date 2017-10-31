@@ -10,8 +10,10 @@
 
 @interface UIColor (HexColor)
 
+/** 返回一个随机颜色 */
 + (UIColor *)randomColor;
 
+/** RGB + Alpha */
 + (instancetype)colorWithHexaString:(NSString *)hexaString;
 
 @end

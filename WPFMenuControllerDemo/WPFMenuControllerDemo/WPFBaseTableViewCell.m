@@ -29,7 +29,7 @@ static NSInteger const kAvatarMarginH = 10;
         self.alignement = [reuseIdentifier containsString:kCellIdentifierLeft] ? MessageAlignementLeft : MessageAlignementRight;
         
         [self buildCell];
-        [self bindGestureRecognizer];
+        [self _bindGestureRecognizer];
     }
     return self;
 }
@@ -90,21 +90,15 @@ static NSInteger const kAvatarMarginH = 10;
             make.bottom.offset(-20).priorityLow();
         }];
     }
-//    [test mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.leading.trailing.equalTo(self.contentView);
-//        make.bottom.offset(0);
-//        make.height.mas_equalTo(20);
-//        make.top.equalTo(self.bubbleView.mas_bottom);
-//    }];
 }
 
-- (void)bindGestureRecognizer {
-    UILongPressGestureRecognizer *bubblelongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressOnBubble:)];
+- (void)_bindGestureRecognizer {
+    UILongPressGestureRecognizer *bubblelongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(_longPressOnBubble:)];
     [self.bubbleView addGestureRecognizer:bubblelongPress];
 }
 
 #pragma mark - Private Method
-- (void)longPressOnBubble:(UILongPressGestureRecognizer *)gesture {
+- (void)_longPressOnBubble:(UILongPressGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {
         
         // 收到别人发送的消息不包含撤回，自己发送的消息包含撤回
@@ -124,13 +118,13 @@ static NSInteger const kAvatarMarginH = 10;
         [self.custormMenu setTargetRect:targetRectInWindow];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(hideMenuNotiAction)
+                                                 selector:@selector(_hideMenuNotiAction)
                                                      name:WPFMenuControllerWillHideMenuNoti
                                                    object:nil];
     }
 }
 
-- (void)hideMenuNotiAction {
+- (void)_hideMenuNotiAction {
     [self.custormMenu removeFromSuperview];
 }
 
